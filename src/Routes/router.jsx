@@ -36,8 +36,8 @@ const router = createBrowserRouter([
         ]
     },
     {
-        path: '/news',
-        element: <h1>News layout</h1>
+        path: '/news/:id', 
+        element: <h1>news layout</h1>
     },
     {
         path: '/auth',

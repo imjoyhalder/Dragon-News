@@ -1,4 +1,5 @@
 import { FaEye } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const NewsCard = ({ singleNews = {}}) => {
   const {
@@ -9,6 +10,7 @@ const NewsCard = ({ singleNews = {}}) => {
     thumbnail_url,
     details,
     tags,
+    id,
   } = singleNews;
 
   return (
@@ -26,7 +28,7 @@ const NewsCard = ({ singleNews = {}}) => {
         <h1 className="text-lg font-bold">{title}</h1>
         <img src={thumbnail_url} alt="Thumbnail" className="w-full h-48 object-cover rounded-md my-3" />
         <p className="text-gray-600 text-sm">{details.slice(0, 200)}...</p>
-        <span className="text-blue-500 font-semibold cursor-pointer">Read More</span>
+        <Link to={`/news/${id}`} className="text-blue-500 font-semibold cursor-pointer">Read More</Link>
       </div>
       <div className="flex items-center justify-between px-4 py-3 border-t mt-2 text-sm text-gray-600">
         <div className="flex gap-1 text-orange-400">
