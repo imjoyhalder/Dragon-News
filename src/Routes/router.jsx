@@ -2,7 +2,6 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import HomeLayout from "../layouts/HomeLayout";
 import LatestNews from "../Components/LatestNews";
 import Header from "../Components/Header";
-import Test from "../Components/test";
 import CategoryNews from "../Pages/CategoryNews";
 
 const router = createBrowserRouter([
@@ -12,7 +11,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '',
-                element: <Navigate to={"category/1"} />
+                element: <Navigate to={"category/2"} />
             },
             {
                 path: "category/:id",

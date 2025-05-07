@@ -24,7 +24,6 @@ const LeftNavbar = () => {
                     ))
 
                 }
-                <NavLink to="/news">Bal</NavLink>
             </div>
         </div>
     );

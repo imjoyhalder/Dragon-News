@@ -11,7 +11,7 @@ const CategoryNews = () => {
             <p className="text-gray-400 text-sm mb-2">
                 {news.length} News Found On This Category
             </p>
-            <div>
+            <div className="flex flex-col gap-3">
                 {
                     news.map(singleNews=> <NewsCard key={singleNews.id} singleNews={singleNews}></NewsCard>)
                 }
