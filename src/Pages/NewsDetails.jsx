@@ -5,7 +5,7 @@ import RightNav from "../Components/layout-component/RightNav";
 const NewsDetails = () => {
 
     const newsItem = useLoaderData();
-    console.log(newsItem)
+    //console.log(newsItem)
 
     const {
         title,
@@ -23,15 +23,15 @@ const NewsDetails = () => {
             <header>
                 <Header></Header>
             </header>
-            <main className="w-11/12 grid grid-cols-12 gap-5">
+            <main className="w-11/12 grid md:grid-cols-12 gap-5 mx-auto">
                 <section className="col-span-9">
                     <h2 className="font-semibold mb-3">Dragon News</h2>
-                    <div className="card bg-base-100 shadow-xl">
-                        <figure className="px-10 pt-10">
+                    <div className="card bg-base-300 shadow-xl">
+                        <figure className="px-4 pt-4">
                             <img
                                 src={newsItem?.thumbnail_url}
                                 alt="Shoes"
-                                className="rounded-xl" />
+                                className="rounded-xl w-full" />
                         </figure>
                         <div className="card-body ">
                             <h2 className="card-title">{newsItem?.title}</h2>

@@ -7,6 +7,7 @@ import AuthLayout from "../layouts/AuthLayout";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import NewsDetails from "../Pages/NewsDetails";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
                 path: "category/:id",
                 element: <CategoryNews />,
                 loader: async ({ params }) => {
-                   
+
                     const res = await fetch("https://mocki.io/v1/764a0a33-4c72-4176-8121-219af4f0b786");
                     if (!res.ok) {
                         throw new Error("Failed to fetch news");
@@ -38,20 +39,22 @@ const router = createBrowserRouter([
     },
     {
         path: '/news/:id',
-        element: <NewsDetails />,
+        element: <PrivateRoute>
+            <NewsDetails />
+        </PrivateRoute>,
         loader: async ({ params }) => {
-          const res = await fetch('https://raw.githubusercontent.com/ProgrammingHero1/dragon-news-resources/refs/heads/main/demo-data/news.json');
-          const news = await res.json();
-          const singleNews = news.find(item => item.id === params.id);
-          return singleNews; 
+            const res = await fetch('https://raw.githubusercontent.com/ProgrammingHero1/dragon-news-resources/refs/heads/main/demo-data/news.json');
+            const news = await res.json();
+            const singleNews = news.find(item => item.id === params.id);
+            return singleNews;
         }
     },
     {
         path: '/auth',
-        element: <AuthLayout></AuthLayout>, 
+        element: <AuthLayout></AuthLayout>,
         children: [
             {
-                path:'/auth/login',
+                path: '/auth/login',
                 element: <Login></Login>
             },
             {

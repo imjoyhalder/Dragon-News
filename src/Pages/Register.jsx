@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../provider/AuthProvider';
 
@@ -6,9 +6,15 @@ const Register = () => {
 
     const {handleEmailPasswordRegister, setUser} = useContext(AuthContext)
 
+    const [error, setError] = useState({})
+
     const handleRegister = (e) =>{
         e.preventDefault()
         const name = e.target.name.value
+        if(name.length<5){
+            setError({...error, name:'Name must be more than 5 characters long'})
+            return
+        }
         const photo_url = e.target.photo_url.value 
         const email = e.target.email.value 
         const password = e.target.password.value 
@@ -56,6 +62,13 @@ const Register = () => {
                             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                         </label>
                     </div>
+                    <label className='label'>
+                        {
+                            error.name && (
+                                <p className='text-xs text-red-500'>{error.name}</p>
+                            )
+                        }
+                    </label>
                     <div className="form-control mt-6">
                         <button className="btn btn-neutral w-full">Register</button>
                     </div>
