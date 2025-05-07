@@ -6,6 +6,7 @@ import CategoryNews from "../Pages/CategoryNews";
 import AuthLayout from "../layouts/AuthLayout";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import NewsDetails from "../Pages/NewsDetails";
 
 const router = createBrowserRouter([
     {
@@ -36,8 +37,14 @@ const router = createBrowserRouter([
         ]
     },
     {
-        path: '/news/:id', 
-        element: <h1>news layout</h1>
+        path: '/news/:id',
+        element: <NewsDetails />,
+        loader: async ({ params }) => {
+          const res = await fetch('https://raw.githubusercontent.com/ProgrammingHero1/dragon-news-resources/refs/heads/main/demo-data/news.json');
+          const news = await res.json();
+          const singleNews = news.find(item => item.id === params.id);
+          return singleNews; 
+        }
     },
     {
         path: '/auth',
